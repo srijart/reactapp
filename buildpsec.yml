@@ -9,7 +9,7 @@ phases:
   build:
     commands:
       - echo Building Docker image for React.js
-      - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/reactapp:latest react .
+      - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/reactapp:latest -f Dockerfile .
       - echo Pushing Docker image to ECR...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/reactapp:latest
 
