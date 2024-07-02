@@ -1,0 +1,37 @@
+version: 0.0
+os: linux
+
+phases:
+  install:
+    commands:
+      - echo Install phase for React.js
+
+  pre_build:
+    commands:
+      - echo Pre-build phase for React.js
+
+  build:
+    commands:
+      - echo Build phase for React.js
+
+  post_build:
+    commands:
+      - echo Post-build phase for React.js
+
+  deploy:
+    application_start:
+      commands:
+        - echo Starting React.js application
+        - $(aws ecr get-login --no-include-email --region $AWS_REGION)
+        - docker pull $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/react-app:latest
+        - docker run -d -p 3000:3000 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/react-app:latest
+
+    validate_service:
+      commands:
+        - echo Validating deployment...
+        - curl -f http://localhost:3000 || exit 1
+
+    teardown:
+      commands:
+        - echo Application deployment completed successfully!
+

@@ -1,0 +1,22 @@
+{
+  "name": "react-app",
+  "version": "1.0.0",
+  "description": "A sample React.js application",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"  // This is used in the Dockerfile to build the React app
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3"
+    // other dependencies
+  },
+  "devDependencies": {
+    // dependencies used only for development
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}
+
